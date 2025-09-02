@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+    padding: 40px 0;
+}
+
+.header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.header p {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+.api-section {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.api-section h2 {
+    color: #4a5568;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.endpoint {
+    background: #f7fafc;
+    border-left: 4px solid #667eea;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.method {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.method.GET { background: #48bb78; color: white; }
+.method.POST { background: #ed8936; color: white; }
+
+.endpoint-url {
+    font-family: 'Courier New', monospace;
+    font-size: 1.1em;
+    color: #2d3748;
+    margin-bottom: 10px;
+}
+
+.description {
+    color: #718096;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #e2e8f0;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-right: 10px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn.secondary {
+    background: #718096;
+}
+
+.response {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    display: none;
+}
+
+.response.show {
+    display: block;
+}
+
+.response pre {
+    background: #2d3748;
+    color: #e2e8f0;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+.status {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.status.success { background: #48bb78; color: white; }
+.status.error { background: #f56565; color: white; }
+.status.info { background: #4299e1; color: white; }
+
+.example {
+    background: #edf2f7;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 15px 0;
+    border-left: 4px solid #667eea;
+}
+
+.example h4 {
+    margin-bottom: 10px;
+    color: #4a5568;
+}
+
+.example pre {
+    background: white;
+    padding: 10px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    overflow-x: auto;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+}
+
+.tab.active {
+    border-bottom-color: #667eea;
+    color: #667eea;
+    font-weight: 600;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .api-section {
+        padding: 20px;
+    }
+}

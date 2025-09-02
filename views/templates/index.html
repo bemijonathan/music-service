@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhive AI Music Generator - API Documentation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎵 Dhive AI Music Generator</h1>
+            <p>Interactive API Documentation & Testing Interface</p>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" onclick="showTab('overview')">Overview</div>
+            <div class="tab" onclick="showTab('endpoints')">API Endpoints</div>
+            <div class="tab" onclick="showTab('testing')">Interactive Testing</div>
+        </div>
+
+        <div id="overview" class="tab-content active">
+            <div class="api-section">
+                <h2>🎯 Overview</h2>
+                <p>Welcome to the Dhive AI Music Generator API! This service allows you to create custom songs using AI-powered lyrics generation and music composition.</p>
+
+                <h3>✨ Features</h3>
+                <ul>
+                    <li>🎤 AI-powered lyrics generation</li>
+                    <li>🎼 Custom music composition</li>
+                    <li>🎵 Multiple genres and styles</li>
+                    <li>📤 Cloud storage integration</li>
+                    <li>🔄 Real-time status tracking</li>
+                </ul>
+
+                <h3>🚀 Quick Start</h3>
+                <ol>
+                    <li>Use the <strong>Create Song</strong> endpoint to generate a new song</li>
+                    <li>Check the status using the returned <code>task_id</code></li>
+                    <li>Download the completed song when ready</li>
+                </ol>
+            </div>
+        </div>
+
+        <div id="endpoints" class="tab-content">
+            <div class="api-section">
+                <h2>📋 API Endpoints</h2>
+
+                <div class="endpoint">
+                    <span class="method GET">GET</span>
+                    <div class="endpoint-url">/</div>
+                    <div class="description">Returns this documentation page</div>
+                </div>
+
+                <div class="endpoint">
+                    <span class="method GET">GET</span>
+                    <div class="endpoint-url">/health</div>
+                    <div class="description">Health check endpoint</div>
+                </div>
+
+                <div class="endpoint">
+                    <span class="method POST">POST</span>
+                    <div class="endpoint-url">/create_song</div>
+                    <div class="description">Create a new song with AI-generated lyrics and music</div>
+                    <div class="example">
+                        <h4>Request Body:</h4>
+                        <pre>{
+  "title": "Summer Vibes",
+  "genre": "pop",
+  "mood": "happy",
+  "theme": "beach party",
+  "style": "electronic"
+}</pre>
+                    </div>
+                </div>
+
+                <div class="endpoint">
+                    <span class="method GET">GET</span>
+                    <div class="endpoint-url">/check_status/&lt;task_id&gt;</div>
+                    <div class="description">Check the status of a song generation task</div>
+                </div>
+
+                <div class="endpoint">
+                    <span class="method POST">POST</span>
+                    <div class="endpoint-url">/download</div>
+                    <div class="description">Download a generated audio file</div>
+                    <div class="example">
+                        <h4>Request Body:</h4>
+                        <pre>{
+  "audio_url": "https://example.com/audio.mp3"
+}</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="testing" class="tab-content">
+            <div class="api-section">
+                <h2>🧪 Interactive API Testing</h2>
+
+                <div class="grid">
+                    <!-- Create Song Form -->
+                    <div class="endpoint">
+                        <span class="method POST">POST</span>
+                        <div class="endpoint-url">/create_song</div>
+                        <div class="description">Create a new AI-generated song</div>
+
+                        <form id="createSongForm">
+                            <div class="form-group">
+                                <label for="title">Song Title:</label>
+                                <input type="text" id="title" name="title" placeholder="Summer Vibes" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="genre">Genre:</label>
+                                <select id="genre" name="genre" required>
+                                    <option value="pop">Pop</option>
+                                    <option value="rock">Rock</option>
+                                    <option value="hip-hop">Hip-Hop</option>
+                                    <option value="electronic">Electronic</option>
+                                    <option value="jazz">Jazz</option>
+                                    <option value="classical">Classical</option>
+                                    <option value="country">Country</option>
+                                    <option value="reggae">Reggae</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mood">Mood:</label>
+                                <select id="mood" name="mood" required>
+                                    <option value="happy">Happy</option>
+                                    <option value="sad">Sad</option>
+                                    <option value="energetic">Energetic</option>
+                                    <option value="calm">Calm</option>
+                                    <option value="romantic">Romantic</option>
+                                    <option value="mysterious">Mysterious</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="theme">Theme:</label>
+                                <input type="text" id="theme" name="theme" placeholder="beach party, love story, adventure..." required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="style">Style:</label>
+                                <input type="text" id="style" name="style" placeholder="electronic, acoustic, orchestral..." required>
+                            </div>
+
+                            <button type="submit" class="btn">🎵 Create Song</button>
+                        </form>
+
+                        <div id="createSongResponse" class="response"></div>
+                    </div>
+
+                    <!-- Check Status Form -->
+                    <div class="endpoint">
+                        <span class="method GET">GET</span>
+                        <div class="endpoint-url">/check_status/&lt;task_id&gt;</div>
+                        <div class="description">Check song generation status</div>
+
+                        <form id="checkStatusForm">
+                            <div class="form-group">
+                                <label for="taskId">Task ID:</label>
+                                <input type="text" id="taskId" name="taskId" placeholder="Enter task ID from song creation" required>
+                            </div>
+
+                            <button type="submit" class="btn">🔍 Check Status</button>
+                        </form>
+
+                        <div id="checkStatusResponse" class="response"></div>
+                    </div>
+
+                    <!-- Download Form -->
+                    <div class="endpoint">
+                        <span class="method POST">POST</span>
+                        <div class="endpoint-url">/download</div>
+                        <div class="description">Download audio file</div>
+
+                        <form id="downloadForm">
+                            <div class="form-group">
+                                <label for="audioUrl">Audio URL:</label>
+                                <input type="url" id="audioUrl" name="audioUrl" placeholder="https://example.com/audio.mp3" required>
+                            </div>
+
+                            <button type="submit" class="btn">📥 Download</button>
+                        </form>
+
+                        <div id="downloadResponse" class="response"></div>
+                    </div>
+
+                    <!-- Health Check -->
+                    <div class="endpoint">
+                        <span class="method GET">GET</span>
+                        <div class="endpoint-url">/health</div>
+                        <div class="description">Check API health status</div>
+
+                        <button onclick="checkHealth()" class="btn">❤️ Check Health</button>
+                        <div id="healthResponse" class="response"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
