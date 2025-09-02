@@ -302,7 +302,8 @@ class SunoMusicGenerator:
         """
         headers = {"Authorization": f"Bearer {self.suno_api_key}"}
         try:
-            url = f"{self.base_url}/api/v1/status/{task_id}"
+            # https://api.sunoapi.org/api/v1/generate/record-info
+            url = f"{self.base_url}/api/v1/generate/record-info/?taskId={task_id}"
             resp = requests.get(url, headers=headers, timeout=30)
             text = resp.text
             logging.info(f"🔎 Suno status HTTP {resp.status_code}: {text}")
